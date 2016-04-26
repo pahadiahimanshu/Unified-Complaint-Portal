@@ -46,6 +46,123 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+  
+  
+  <script>
+    function getComplaintsJSON()
+{
+	var req = new XMLHttpRequest();  
+	req.open('GET', 'https://snma.herokuapp.com/getData', false);   
+	req.send();  
+	text=req.responseText;
+	var lines = text.split("{");
+	//console.log(lines);
+	var j=0;
+	for (var i=1;i<lines.length;i++) {
+		lines[i]="{"+lines[i];
+	}
+	var jsonobjs=[];
+	for (var i=1;i<lines.length;i++) {
+	  jsonobjs[j]=JSON.parse(lines[i]);
+	  j++;
+	}
+	//console.log(jsonobjs);
+	return jsonobjs;
+}
+function dodone(element){
+    alert("complaint updated: " + element.id);
+	objs=getComplaintsJSON();
+
+	ele=objs[parseInt(element.id.split('c')[1])];
+	console.log(ele);
+	var url="https://snma.herokuapp.com/done?username="+ ele.username +"&emailid="+ ele.emailid +"&address="+ ele.address +"&category="+ ele.category+"&complaint="+ ele.complaint + "&name="  + ele.name +"&location="+ ele.location +  "&pincode="+ele.pincode +"&mobile="+ ele.mobile+"&problemsince="+ele.problemsince;
+	var req = new XMLHttpRequest();
+	req.open('GET', url, false);   
+	req.send();
+	
+}
+function fun(){
+	objs=getComplaintsJSON();
+	var container = document.getElementById("container");
+	while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+    }
+	for(var i=0;i<objs.length;i++){
+//		if(document.cookie.split(";")[0].split("=")[1]!=objs[i].username)
+//			continue;
+	    container.appendChild(document.createTextNode(objs[i].complaint));
+		if(objs[i].done=="false"){
+			var butt=document.createElement("input");
+			butt.id="c"+i;
+			butt.name="c"+i;
+			butt.type="button";
+			butt.value="Done";
+			butt.setAttribute("onclick",'dodone(this)');
+			butt.setAttribute("style","align:right");
+			container.appendChild(butt);
+		}
+		container.appendChild(document.createElement("br"));
+		container.appendChild(document.createElement("br"));
+	}
+	
+}
+
+  </script>
+  
+  
+  
+  <!-- form code -->
+
+<div id="viewcomplaints" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                <h3 class="modal-title">COMPLAINTS</h3>
+            </div>
+            <div class="modal-body">       
+                          
+      <div class="row row-content" id="reserve">
+                     
+              <form class="form-inline">
+               
+                   
+                  <h4><b>Complaint Details</b></h4>
+                <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
+                             <div class="row">
+                                 <p style="padding:8px;"></p>
+                                 <div class="col col-sm-3"></div>
+                                 <div class="col col-sm-6">
+                                 <div class="container" id="container">
+								 </div>
+                            </div>
+
+                            
+
+            </div>
+            </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- form code over -->
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <body>
     <!-- Navigation
     ==========================================-->
@@ -67,6 +184,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.html#tf-home" class="page-scroll">Home</a></li>
             <li><a href="index.html#tf-about" class="page-scroll">About</a></li>
+			<li><a href="viewcomplaints" class="page-scroll" data-toggle="modal" data-target="#viewcomplaints" onclick='fun()'>Complaints</a></li>
             <li id="blue" class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                 <ul id="tf-dropdown"class="dropdown-menu">
@@ -535,6 +653,8 @@
   });
  
 });
+
+
     </script>
 
   </body>
