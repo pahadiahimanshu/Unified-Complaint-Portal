@@ -28,8 +28,8 @@
     	// var d = new Date();
     	// d.setTime(d.getTime() + (exdays*24*60*60*1000));
     	// var expires = "expires="+ d.toUTCString();
-    	document.cookie = "username=" + cname;
-		alert("setting cookie");
+    	document.cookie = "username=" + cname+";";
+		//alert("setting cookie for user "+cname);
 	}
 
 	function fun(){
@@ -49,6 +49,7 @@
 					window.location="index.html";
 					setCookie(mail);
 					//alert("jhhbh");
+					return false;
 					break;
 		
 			}

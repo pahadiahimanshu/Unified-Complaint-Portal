@@ -89,8 +89,8 @@ function fun(){
             container.removeChild(container.lastChild);
     }
 	for(var i=0;i<objs.length;i++){
-//		if(document.cookie.split(";")[0].split("=")[1]!=objs[i].username)
-//			continue;
+		if(document.cookie.split(";")[0].split("=")[1]!=objs[i].username)
+			continue;
 	    container.appendChild(document.createTextNode(objs[i].complaint));
 		if(objs[i].done=="false"){
 			var butt=document.createElement("input");
