@@ -55,7 +55,9 @@
 			}
 		
 			else if(mail===objs[i].username && pass!==objs[i].password){
-				alert("Please enter correct username and password");	
+				//alert("Please enter correct username and password");
+				document.getElementById("demo").innerHTML="Incorrect username/password";
+				return false;
 				break;
 			}
 		
@@ -70,8 +72,10 @@
 	
 				req.open('GET', ur, false);   
 				req.send();
-				alert("Signup successful");	
+				//alert("Signup successful");	
+				document.getElementById("demo").innerHTML="Successful signup";
 				setCookie(mail);
+				return false;
 						  
 		}
 		//document.getElementById("prac").innerHTML =objs[0].username+" "+objs[1].username ;
