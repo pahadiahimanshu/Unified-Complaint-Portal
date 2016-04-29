@@ -40,6 +40,7 @@
 
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <script type="text/javascript" src="evs.js"></script>
+    <script type="text/javascript" src="viewc.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,6 +49,32 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+  <!-- form code -->
+
+<div id="viewcomplaints" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                <h3 class="modal-title">COMPLAINTS</h3>
+            </div>
+            <div class="modal-body">       
+					 <div class="container" id="container"></div>
+            </div>
+            </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- form code over -->
+
+  
   <body>
     <!-- Navigation
     ==========================================-->
@@ -69,7 +96,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#tf-home" class="page-scroll">Home</a></li>
             <li><a href="#tf-about" class="page-scroll">About</a></li>
-            <li class="dropdown">
+            <li><a href="viewcomplaints" class="page-scroll" data-toggle="modal" data-target="#viewcomplaints" onclick='fun()'>Complaints</a></li>
+			<li class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                 <ul id="tf-dropdown"class="dropdown-menu">
                 <li id="dropdowntext"><a href="water.html"><span style="color: white;">Water Complain</span></a></li>

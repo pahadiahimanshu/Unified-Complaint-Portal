@@ -28,6 +28,7 @@
     ================================================== -->
     <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
     <link href="css/owl.theme.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="forms.js"></script>
 
     <!-- Stylesheet
     ================================================== -->
@@ -38,6 +39,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="viewc.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,6 +48,34 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  
+    <!-- form code -->
+
+<div id="viewcomplaints" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                <h3 class="modal-title">COMPLAINTS</h3>
+            </div>
+            <div class="modal-body">       
+					 <div class="container" id="container"></div>
+            </div>
+            </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- form code over -->
+  
+  
+  
+  
   <body>
     <!-- Navigation
     ==========================================-->
@@ -67,7 +97,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.html#tf-home" class="page-scroll">Home</a></li>
             <li><a href="index.html#tf-about" class="page-scroll">About</a></li>
-            <li id="orange" class="dropdown">
+            <li><a href="viewcomplaints" class="page-scroll" data-toggle="modal" data-target="#viewcomplaints" onclick='fun()'>Complaints</a></li>
+			<li id="orange" class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                 <ul id="tf-dropdown"class="dropdown-menu">
                 <li id="dropdowntextorange"><a href="water.html"><span style="color: white;">Water Complain</span></a></li>
@@ -412,10 +443,10 @@
                             <div class="col col-sm-4"><b>Complaint(s)</b></div>
                             <div class="col col-sm-7">
                                 <div class="form-group">
-                                    <input  type="checkbox" class="form-control"  id="checkbox1"> Shortage of Water Supply in The Loality
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox2"> Dirty Water in the area</p>
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox3"> Request for a Water Tanker in the Locality</p>
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox4"> Leakage from water pipes in the area</p>
+                                    <input  type="checkbox" class="form-control input-sm"  id="checkbox1" value="Collect Garbage dumps"> Collect Garbage dumps</p>
+                                    
+                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox2" value="MCD garbage vans not visiting regularly"> MCD garbage vans not visiting regularly</p>
+                                    
                                     
                                     <p style="padding:5px;"></p>
                                     
@@ -454,7 +485,7 @@
                                  <p style="padding:8px;"></p>
                                  <div class="col col-sm-3"></div>
                                  <div class="col col-sm-6">
-                                     <button type="submit" href="#" class="btn btn-default btn-block" id="submit_complaint" data-toggle="modal">Submit Complaint</button></div>
+                                     <button type="submit" href="#" class="btn btn-default btn-block" id="submit_complaint" data-toggle="modal" onclick="garbage()">Submit Complaint</button></div>
                                  <!-- <div class="col col-sm-3">
                                     <span><button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button></span>
                                  </div>

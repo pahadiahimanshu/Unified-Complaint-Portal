@@ -20,6 +20,8 @@
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
+    <script type="text/javascript" src="forms.js"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
@@ -38,6 +40,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="viewc.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,67 +51,6 @@
   </head>
   
   
-  
-  <script>
-    function getComplaintsJSON()
-{
-	var req = new XMLHttpRequest();  
-	req.open('GET', 'https://snma.herokuapp.com/getData', false);   
-	req.send();  
-	text=req.responseText;
-	var lines = text.split("{");
-	//console.log(lines);
-	var j=0;
-	for (var i=1;i<lines.length;i++) {
-		lines[i]="{"+lines[i];
-	}
-	var jsonobjs=[];
-	for (var i=1;i<lines.length;i++) {
-	  jsonobjs[j]=JSON.parse(lines[i]);
-	  j++;
-	}
-	//console.log(jsonobjs);
-	return jsonobjs;
-}
-function dodone(element){
-    alert("complaint updated: " + element.id);
-	objs=getComplaintsJSON();
-
-	ele=objs[parseInt(element.id.split('c')[1])];
-	console.log(ele);
-	var url="https://snma.herokuapp.com/done?username="+ ele.username +"&emailid="+ ele.emailid +"&address="+ ele.address +"&category="+ ele.category+"&complaint="+ ele.complaint + "&name="  + ele.name +"&location="+ ele.location +  "&pincode="+ele.pincode +"&mobile="+ ele.mobile+"&problemsince="+ele.problemsince;
-	var req = new XMLHttpRequest();
-	req.open('GET', url, false);   
-	req.send();
-	
-}
-function fun(){
-	objs=getComplaintsJSON();
-	var container = document.getElementById("container");
-	while (container.hasChildNodes()) {
-            container.removeChild(container.lastChild);
-    }
-	for(var i=0;i<objs.length;i++){
-		if(document.cookie.split(";")[0].split("=")[1]!=objs[i].emailid)
-			continue;
-	    container.appendChild(document.createTextNode(objs[i].complaint));
-		if(objs[i].done=="false"){
-			var butt=document.createElement("input");
-			butt.id="c"+i;
-			butt.name="c"+i;
-			butt.type="button";
-			butt.value="Done";
-			butt.setAttribute("onclick",'dodone(this)');
-			butt.setAttribute("style","align:right");
-			container.appendChild(butt);
-		}
-		container.appendChild(document.createElement("br"));
-		container.appendChild(document.createElement("br"));
-	}
-	
-}
-
-  </script>
   
   
   
@@ -123,22 +65,10 @@ function fun(){
                 <h3 class="modal-title">COMPLAINTS</h3>
             </div>
             <div class="modal-body">       
-                          
-      <div class="row row-content" id="reserve">
-                     
-              <form class="form-inline">
-               
-                   
-                  <h4><b>Complaint Details</b></h4>
-                <hr style="height:1px;border:none;color:#333;background-color:#333;" />
 
-                             <div class="row">
-                                 <p style="padding:8px;"></p>
-                                 <div class="col col-sm-3"></div>
-                                 <div class="col col-sm-6">
                                  <div class="container" id="container">
 								 </div>
-                            </div>
+    
 
                             
 
@@ -199,7 +129,7 @@ function fun(){
             <li><a href="#tf-works" class="page-scroll">Water Complaints</a></li>
             <li><a href="index.html#tf-testimonials" class="page-scroll">Testimonials</a></li>
             <li><a href="index.html#tf-contact" class="page-scroll">Contact</a></li>
-            <li><a href="login.html" >Login</a></li>
+            <li><a href="login.html">Login</a></li>
             <!-- <li><a href="signup.html" >Signup</a></li> -->
           </ul>
 
@@ -562,10 +492,10 @@ function fun(){
                             <div class="col col-sm-4"><b>Complaint(s)</b></div>
                             <div class="col col-sm-7">
                                 <div class="form-group">
-                                    <input  type="checkbox" class="form-control"  id="checkbox1"> Shortage of Water Supply in The Loality
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox2"> Dirty Water in the area</p>
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox3"> Request for a Water Tanker in the Locality</p>
-                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox4"> Leakage from water pipes in the area</p>
+                                    <input  type="checkbox" class="form-control"  id="checkbox1" value="Shortage of Water Supply in The Loality"> Shortage of Water Supply in The Loality
+                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox2" value="Dirty Water in the area"> Dirty Water in the area</p>
+                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox3" value="Request for a Water Tanker in the Locality"> Request for a Water Tanker in the Locality</p>
+                                    <p><input type="checkbox" class="form-control input-sm" id="checkbox4" value="Leakage from water pipes in the area"> Leakage from water pipes in the area</p>
                                     
                                     <p style="padding:5px;"></p>
                                     
@@ -604,7 +534,7 @@ function fun(){
                                  <p style="padding:8px;"></p>
                                  <div class="col col-sm-3"></div>
                                  <div class="col col-sm-6">
-                                     <button type="submit" href="#" class="btn btn-default btn-block" id="submit_complaint" data-toggle="modal">Submit Complaint</button></div>
+                                     <button type="submit" href="#" class="btn btn-default btn-block" id="submit_complaint" data-toggle="modal" onclick="water()">Submit Complaint</button></div>
                                  <!-- <div class="col col-sm-3">
                                     <span><button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button></span>
                                  </div>
