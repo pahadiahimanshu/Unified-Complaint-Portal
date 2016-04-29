@@ -66,6 +66,14 @@
 </style>
   </head>
   
+  
+  <script>
+  function logout(){
+  document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  window.location="index.html";
+  }
+  
+  </script>
   <!-- form code -->
 
 <div id="viewcomplaints" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -128,6 +136,7 @@
             <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
             <li><a href="login.html" >Login</a></li>
+			<li><a onclick='logout()' href="#">Logout</a></li>
             <li><p id = "profile" style="color: white"></p></a></li>
             <!-- <li><a href="signup.html" >Signup</a></li> -->
           </ul>
@@ -841,7 +850,7 @@
 	
             var m = (x.split(";")[0]).split("=")[1];
             console.log(m);
-			document.getElementById("profile").innerHTML = "Hello, "+m;
+			document.getElementById("profile").innerHTML = m;
         }
 
         
