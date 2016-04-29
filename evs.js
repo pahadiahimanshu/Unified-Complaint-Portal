@@ -48,13 +48,14 @@
 			if(mail===objs[i].username && pass===objs[i].password){
 					window.location="index.html";
 					setCookie(mail);
+					return false;
 					//alert("jhhbh");
 					break;
 		
 			}
 		
 			else if(mail===objs[i].username && pass!==objs[i].password){
-				//alert("Please enter correct username and password");	
+				alert("Please enter correct username and password");	
 				break;
 			}
 		
@@ -69,6 +70,7 @@
 	
 				req.open('GET', ur, false);   
 				req.send();
+				alert("Signup successful");	
 				setCookie(mail);
 						  
 		}
