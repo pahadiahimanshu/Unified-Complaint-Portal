@@ -40,6 +40,13 @@ var date=document.getElementById("problem_since_date").value;
 
 
 var url="https://snma.herokuapp.com/infoCollect?username="+email+"&done=false"+"&emailid="+email+"&address="+address+"&category=ewaste&complaint="+complain1+".description "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+var url2="https://localhost:3000/sendmail?username="+email+"&emailid="+email+"&address="+address+"&category=ewaste&complaint="+complain1+".description "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+
+
+
+var req2 = new XMLHttpRequest();  
+	req2.open('GET', url2, false);   
+//	req2.send();  
 // https://snma.herokuapp.com/infoCollect?username=user1&emailid=user1@usersite.com&address=a1%20qweqe&category=water&complaint=hohoho&name=Nitin%20Pagal&location=delhi&pincode=110022&mobile=9876543210&problemsince=2-2-2000
 
 var req = new XMLHttpRequest();  
@@ -95,6 +102,10 @@ var date=document.getElementById("problem_since_date").value;
 
 
 var url="https://snma.herokuapp.com/infoCollect?username="+email+"&done=false"+"&emailid="+email+"&address="+address+"&category=garbage&complaint="+complain1+". "+complain2+".description "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+var url2="https://localhost:3000/sendmail?username="+email+"&emailid="+email+"&address="+address+"&category=garbage&complaint="+complain1+". "+complain2+".description "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+var req2 = new XMLHttpRequest();  
+	req2.open('GET', url2, false);   
+	//req2.send(); 
 //https://snma.herokuapp.com/infoCollect?username=user1&emailid=user1@usersite.com&address=a1%20qweqe&category=water&complaint=hohoho&name=Nitin%20Pagal&location=delhi&pincode=110022&mobile=9876543210&problemsince=2-2-2000
 
 var req = new XMLHttpRequest();  
@@ -152,6 +163,13 @@ var date=document.getElementById("problem_since_date").value;
 
 
 var url="https://snma.herokuapp.com/infoCollect?username="+email+"&done=false"+"&emailid="+email+"&address="+address+"&category=water&complaint="+complain1+". "+complain2+". "+complain3+". "+complain4+" Description: "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+var url2="https://localhost:3000/sendmail?username="+email+"&emailid="+email+"&address="+address+"&category=water&complaint="+complain1+". "+complain2+". "+complain3+". "+complain4+".description "+compdet+"&name="+name+"&location="+zone+"&pincode="+pin+"&mobile="+contactm+"&problemsince="+date;
+
+
+
+var req2 = new XMLHttpRequest();  
+	req2.open('GET', url2, false);   
+//	req2.send();  
 //https://snma.herokuapp.com/infoCollect?username=user1&emailid=user1@usersite.com&address=a1%20qweqe&category=water&complaint=hohoho&name=Nitin%20Pagal&location=delhi&pincode=110022&mobile=9876543210&problemsince=2-2-2000
 
 var req = new XMLHttpRequest();  
